@@ -1,6 +1,8 @@
-import randomName from 'random-name';
+const randomName = require('random-name');
 
-export default (ArrayLength) => {
+const fs = require('fs');
+
+const a = (ArrayLength) => {
   const data = [];
   const categories = ['Mandatory', 'Discretionary'];
   // eslint-disable-next-line no-plusplus
@@ -16,10 +18,16 @@ export default (ArrayLength) => {
       name,
       category,
       key: i,
-      x: Math.random() * 800,
-      y: Math.random() * 400,
+      // x: Math.random() * 800,
+      // y: Math.random() * 400,
     });
   }
 
   return data;
 };
+
+// export default a;
+
+fs.writeFile('data.json', JSON.stringify(a(50)), (err, res) => {
+  console.log(err);
+});
